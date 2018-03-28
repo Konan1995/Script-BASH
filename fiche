@@ -1,0 +1,105 @@
+#! /bin/bash
+
+echo "Bienvenue sur notre questionnaire."
+echo "Vous allez devoir répondre à plusieurs questions."
+echo "Veillez à faire attention à l'orthographe de vos réponses."
+echo "Suivez bien les instructions qui vous seront donné tout au long du questionnaire."
+
+BLUE="\033[1;34m"
+RED="\033[0;31m"
+NC="\033[0m"
+GREEN="\033[0;32m"
+TRUE="$BLUE Bonne réponse... $NC"
+FALSE="$RED Mauvaise réponse... $NC"
+FIN="$GREEN Merci d'avoir torché en 30 secondes ce que j'ai fait en plus de 3 heures $NC"
+
+question1()
+{
+echo « De quel personnage suis la trâme principal de ce manga ? Naruto ou DarkSasukedu94 »
+read reponse1
+
+if [ $reponse1 = "Naruto" ];
+then 
+	echo -e $TRUE
+elif [ $reponse1 = "DarkSasukedu94" ];
+then
+	echo -e  "$RED T'as tout compris au manga tu peux arrêter le questionnaire $NC"; exit;
+else
+	echo -e $FALSE
+fi
+question2
+}
+
+question2()
+{
+echo « Comment se nomme la suite des aventures de Naruto ? Shippuden ou NextGeneration »
+
+read reponse2
+
+if [ $reponse2 = "Shippuden" ];
+then 
+	echo -e $TRUE
+else
+	echo -e $FALSE
+fi
+question3
+}
+
+question3()
+{
+echo « Quel est le nom du créateur de Naruto ? Kishimoto ou Tajiri »
+
+read reponse3
+
+if [ $reponse3 = "Kishimoto" ];
+then 
+	echo -e $TRUE
+elif [ $reponse3 = "Tajiri" ];
+then
+	echo -e "$RED Tajiri est le créateur de Pokémon $NC"
+else
+	echo -e $FALSE
+fi
+question4
+}
+
+question4()
+{
+echo « En quelle année à commencé la diffusion animé de Naruto ? »
+
+read reponse4
+
+if [ $reponse4 = "2002" ];
+then 
+	echo -e $TRUE
+else
+	echo -e "$RED La réponse était 2002! $NC"
+fi
+question5
+}
+
+question5()
+{
+echo « Comment se nomme le fils de Naruto ? Boruto , Burito ou DarkBuritodu94 »
+
+read reponse5
+
+if [ $reponse5 = "Boruto" ];
+then
+	echo -e $TRUE
+elif [ $reponse5 = "DarkBuritodu94" ];
+then
+	echo -e "$RED Seulement s’il était issu d’une union homosexuel entre Naruto et DarkSasuke $NC"
+else
+	echo -e $FALSE
+fi
+
+echo -e $FIN
+}
+
+question1
+
+
+LISTE="Voici les réponses que tu as donné au questionnaire : $reponse1 ; $reponse2 ; $reponse3 ; $reponse4 ; $reponse5 ;"
+
+echo $LISTE > ./REPONSES.txt
